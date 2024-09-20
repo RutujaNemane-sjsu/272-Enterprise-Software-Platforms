@@ -1,0 +1,11 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY flask_blog/requirements.txt /app/
+RUN pip install --no-cache-dir -r flask_blog/requirements.txt
+
+COPY . /app
+
+# Run the tests
+CMD ["python", "-m", "unittest", "discover", "tests"]
